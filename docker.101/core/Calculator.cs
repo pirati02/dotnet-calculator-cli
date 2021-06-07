@@ -1,18 +1,16 @@
-using System;
+using docker._101.contract;
 
-namespace docker._101
+namespace docker._101.core
 {
-    public class Calculator
+    public class Calculator : ICalculator
     {
-        private readonly CalculatorExpressionType _expression;
-        private readonly double _numberOne;
-        private readonly double _numberTwo;
+        private CalculatorExpressionType _expression;
+        private double _numberOne;
+        private double _numberTwo;
 
-        public Calculator(
-            CalculatorExpressionType expression,
+        public void Expression(CalculatorExpressionType expression,
             double numberOne,
-            double numberTwo
-        )
+            double numberTwo)
         {
             _expression = expression;
             _numberOne = numberOne;

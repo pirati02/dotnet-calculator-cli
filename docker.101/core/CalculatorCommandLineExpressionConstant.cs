@@ -1,4 +1,4 @@
-namespace docker._101
+namespace docker._101.core
 {
     public class CalculatorCommandLineExpressionConstant
     {

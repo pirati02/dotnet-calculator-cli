@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>docker._101.tests</RootNamespace>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="6.0.0-beta0001" />
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+        <PackageReference Include="SpecFlow" Version="3.8.14" />
+        <PackageReference Include="SpecFlow.xUnit" Version="3.8.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\docker.101\docker.101.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,11 +1,12 @@
-using System;
+using System.Collections.Generic;
+using docker._101.contract;
 using static System.Double;
 
-namespace docker._101
+namespace docker._101.core
 {
     using static CalculatorExpressionType;
 
-    public class CalculatorCommandLineReader
+    public class CalculatorCommandLineReader : ICalculatorCommandLineReader
     {
         private CalculatorExpressionType _cliCalculatorExpression = None;
         private double _numberOne;
@@ -15,12 +16,16 @@ namespace docker._101
         public double NumberTwo => _numberTwo;
         public CalculatorExpressionType CalculatorExpression => _cliCalculatorExpression;
 
+        public CalculatorCommandLineReader()
+        {
+        }
+
         public CalculatorCommandLineReader(string[] args)
         {
             ReadArgs(args);
         }
-
-        private void ReadArgs(string[] args)
+  
+        public void ReadArgs(string[] args)
         {
             if (args.Length == 0)
                 return;
@@ -34,9 +39,9 @@ namespace docker._101
             TryParse(args[3]?.Trim(), out _numberTwo);
         }
 
-        private void ParseExpression(string[] args)
+        private void ParseExpression(IReadOnlyList<string> args)
         {
-            if (args.Length < 2)
+            if (args.Count < 2)
                 return;
 
             var expression =
