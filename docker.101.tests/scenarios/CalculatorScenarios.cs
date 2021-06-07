@@ -24,14 +24,14 @@ namespace docker._101.tests.scenarios
         {
             _numberTwo = numberTwo;
         }
-
-
+        
+        
         [Then(@"the result should be (.*)")]
         public void ThenTheResultShouldBe(double result)
         {
             result.Should().Be(_calculator.GetResult());
         }
-
+        
         [When(@"the two expression type equals '(.*)'")]
         public void WhenTheTwoExpressionTypeEquals(string expression)
         {
@@ -47,7 +47,7 @@ namespace docker._101.tests.scenarios
                 _calculatorCommandLineReader.NumberTwo
             );
         }
-
+        
         [When(@"expression is not defined")]
         public void WhenExpressionIsNotDefined()
         {
@@ -62,6 +62,6 @@ namespace docker._101.tests.scenarios
                 _calculatorCommandLineReader.NumberOne,
                 _calculatorCommandLineReader.NumberTwo
             );
-        }
+        } 
     }
 }

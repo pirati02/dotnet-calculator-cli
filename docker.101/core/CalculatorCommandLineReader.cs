@@ -8,23 +8,13 @@ namespace docker._101.core
 
     public class CalculatorCommandLineReader : ICalculatorCommandLineReader
     {
-        private CalculatorExpressionType _cliCalculatorExpression = None;
         private double _numberOne;
         private double _numberTwo;
 
         public double NumberOne => _numberOne;
         public double NumberTwo => _numberTwo;
-        public CalculatorExpressionType CalculatorExpression => _cliCalculatorExpression;
+        public CalculatorExpressionType CalculatorExpression { get; private set; } = None;
 
-        public CalculatorCommandLineReader()
-        {
-        }
-
-        public CalculatorCommandLineReader(string[] args)
-        {
-            ReadArgs(args);
-        }
-  
         public void ReadArgs(string[] args)
         {
             if (args.Length == 0)
@@ -32,7 +22,7 @@ namespace docker._101.core
 
             ParseExpression(args);
 
-            if (_cliCalculatorExpression == None)
+            if (CalculatorExpression == None)
                 return;
 
             TryParse(args[2]?.Trim(), out _numberOne);
@@ -49,7 +39,7 @@ namespace docker._101.core
                     ? args[1]
                     : string.Empty;
 
-            _cliCalculatorExpression = expression switch
+            CalculatorExpression = expression switch
             {
                 "add" => Add,
                 "sub" => Subtract,
@@ -62,7 +52,7 @@ namespace docker._101.core
 
     public enum CalculatorExpressionType
     {
-        None,
+        None = 0,
         Add,
         Subtract,
         Multiply,
